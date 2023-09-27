@@ -56,3 +56,6 @@ Suspense Boundaries (React, not Next specific):
 Import Suspense react component and wrap an asynchronously loading component
 This will have it load separately from everything else
 Pass it a fallback argument to show something while loading
+
+Public API with API Routes:
+Any file inside the folder pages/api is mapped to /api/* and will be treated as an API endpoint instead of a page.
