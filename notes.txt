@@ -1,0 +1,58 @@
+https://www.traversymedia.com/blog/next-js-13-crash-course
+
+npx create-next-app@latest
+
+Routing:
+
+Next 13 changes how routing is implemented, using the app/ directory:
+Add [pagemane]/page.jsx to app/ - this automatically creates the /[pagename] route.
+Link to route with Link componenet: <Link href='/[pagename]'>Page Name</Link>
+Nest child page jsx files in their own directory within parent directory
+
+Layouts:
+Add a layout for a route by adding a layout.jsx file adjacent to the page.jsx file.
+Export the layout function as a react component, with {children} parameters
+Use {children} in layout jsx to display contents of page function
+All children will inherit the closest layout
+
+Meta:
+Root <head> meta is configured in root layout
+Override for a specific page by exporting a metadata object in page's component file.
+This will not apply to children, but can be used in layout file instead to accomplish this
+
+Fonts:
+Use next/font api for font optimization and improved privacy and performance
+
+Server components vs Client components:
+Components are rendered server side by default
+Begin file with 'use client'; to convert it to a client component
+
+Pros / Cons of server components:
+Pros:
+- Load faster - Don't have to wait for the JavaScript to load
+- Smaller client bundle size
+- SEO friendly
+- Access to resources the client can't access
+- Hide sensitive data from the client
+- More secure against XSS attacks
+- Improved developer experience
+- Just like with anything else, there are also disadvantages:
+
+Cons:
+- Not as interactive
+- No component state. We can not use the useState hook.
+- No component lifecycle methods. We can not use the useEffect hook.
+
+Loading State:
+Add loading.jsx to app/ and export a function of any name
+This will display while a new server component page is being loaded
+
+Dynamic Routes:
+Represent a page for dynamic routes by placing it in a [name] folder (or whatever you want to call it)
+A route at ex: about/cool-thing will load app/about/[name]
+Access the param passed in the folder name by retrieving `params` in component parameters
+
+Suspense Boundaries (React, not Next specific):
+Import Suspense react component and wrap an asynchronously loading component
+This will have it load separately from everything else
+Pass it a fallback argument to show something while loading
